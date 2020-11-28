@@ -5,6 +5,7 @@ import pymongo
 import datetime
 from datetime import timedelta
 from controllers.fetchquery import *
+from controllers.enumeration import *
 
 
 app = FastAPI(
@@ -17,7 +18,7 @@ summary = "Get the Closing Price",
 description = "Get Closing price of the desired date and stock",
 tags=["Get the Closing Price"]
 )
-def get_closing_price_app(Year: int, Month: int, Day: int , stockname: str):
+def get_closing_price_app(Year: int, Month: int, Day: int , stockname: StockName):
   yyyy, mm, dd = Year, Month, Day
   if month_check(int(mm)) and day_check(int(mm),int(dd)):
     querydate = datetime.datetime(int(yyyy), int(mm), int(dd), 00, 00, 00)
@@ -30,7 +31,7 @@ summary = "Get the Closing Price for the Week",
 description = "Get Closing price of the week for a stock",
 tags=["Get the Closing Price For The Week"]
 )
-def get_closing_price_app_week(Year: int, Month: int, Day: int , stockname: str):
+def get_closing_price_app_week(Year: int, Month: int, Day: int , stockname: StockName):
   yyyy, mm, dd = Year, Month, Day
   if month_check(int(mm)) and day_check(int(mm),int(dd)):
     querydate = datetime.datetime(int(yyyy), int(mm), int(dd), 00, 00, 00)
@@ -44,7 +45,7 @@ summary = "Best Time To Buy And Sell Stock",
 description = "Find out which is the best time to buy and sell for max profit(for any year)",
 tags=["Best Time To Buy And Sell Stock/Profit"]
 )
-def best_time(Year: int, stockname: str):
+def best_time(Year: int, stockname: StockName):
   yyyy = Year
   querydate = datetime.datetime(int(yyyy), 1, 1, 00, 00, 00)
   querydateend = datetime.datetime(int(yyyy), 1, 1, 00, 00, 00) + timedelta(weeks = 52)
