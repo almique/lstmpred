@@ -2,6 +2,7 @@ import pymongo
 import datetime
 from datetime import timedelta
 from typing import List, Optional
+import controllers.enumeration
 
 class buysell():
     Datetobuy: datetime
