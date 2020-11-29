@@ -1,1 +1,2 @@
-# lstmpred
+# LSTM-RNN BASED PREDICTION QUERY API
+
