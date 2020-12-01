@@ -103,4 +103,21 @@ def best_time_to_buy_and_sell(querydate, querydateend, stockname) -> buysell:
             ob.datesell_Pridictions = info_l[1]
             ob.Profit = info_l[2]
             return ob
+
+def best_Stock_to_buy_and_sell(querydate, querydateend , stockname) -> str:
+    dicta = {}
+    for sname in stockname:
+        ob1 = best_time_to_buy_and_sell(querydate, querydateend, sname)
+        pro = int(ob1.Profit)
+        dicta[pro] = sname
+    return max(dicta.values(), key=lambda k: k[0])
+
+#[
+#  "ASIANPAINT",
+#  "ADANIPORTS",
+#  "AXISBANK",
+#  "BAJFINANCE",
+#  "BHARTIARTL",
+#  "BAJAJ-AUTO"
+#]
       
