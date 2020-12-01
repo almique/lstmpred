@@ -50,3 +50,14 @@ def best_time(Year: int, stockname: StockName):
   querydate = datetime.datetime(int(yyyy), 1, 1, 00, 00, 00)
   querydateend = datetime.datetime(int(yyyy), 1, 1, 00, 00, 00) + timedelta(weeks = 52)
   return best_time_to_buy_and_sell(querydate, querydateend , stockname)
+
+@app.post("/best_Stock",
+summary = "Best Stock As Per Profit Throughout the year",
+description = "Find out which is the best stock to buy and sell for max profit(for any year)",
+tags=["Best Stock To Buy as per Profit In That Year"]
+)
+def best_Stock(Year: int, stockname: List[StockName]):
+  yyyy = Year
+  querydate = datetime.datetime(int(yyyy), 1, 1, 00, 00, 00)
+  querydateend = datetime.datetime(int(yyyy), 1, 1, 00, 00, 00) + timedelta(weeks = 52)
+  return best_Stock_to_buy_and_sell(querydate, querydateend , stockname)
